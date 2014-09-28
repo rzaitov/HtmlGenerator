@@ -1,0 +1,9 @@
+import Generator
+
+
+class SingleGenerator(Generator.Generator):
+	def __init__(self, template_path, xls_helper, column_names, output_file_name):
+		super(SingleGenerator, self).__init__(template_path, xls_helper, column_names)
+
+		assert output_file_name is not None
+		self.output_file_name = output_file_name
