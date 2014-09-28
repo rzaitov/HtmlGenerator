@@ -3,8 +3,8 @@ import Generator
 
 
 class PluralGenerator(Generator.Generator):
-	def __init__(self, template_path, xls_helper, column_names, file_name_column, output_dir="output"):
-		super(PluralGenerator, self).__init__(template_path, xls_helper, column_names)
+	def __init__(self, template_path, xls_helper, column_names, encode, file_name_column, output_dir):
+		super(PluralGenerator, self).__init__(template_path, xls_helper, column_names, encode)
 		assert file_name_column is not None
 
 		self.file_name_column = file_name_column

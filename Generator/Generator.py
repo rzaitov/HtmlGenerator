@@ -1,14 +1,16 @@
 
 
 class Generator(object):
-	def __init__(self, template_path, xls_helper, column_names):
+	def __init__(self, template_path, xls_helper, column_names, encode):
 		assert template_path is not None
 		assert xls_helper is not None
 		assert column_names is not None
+		assert encode is not None
 
 		self.template_path = template_path
 		self.xls_helper = xls_helper
 		self.column_names = column_names
+		self.encode = encode
 
 		f = open(self.template_path)
 		self.template = f.read().decode('windows-1251')
