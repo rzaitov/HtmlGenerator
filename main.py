@@ -11,14 +11,15 @@ fileNameColumn = 'L'
 generator = Generator.Generator('template.html', xlsHelper, columnNames, fileNameColumn)
 
 startRow = 1
-#count = 1
-count = 1047
 rowIndex = startRow
 
-while rowIndex < count + startRow:
-	try:
+try:
+	while True:
 		generator.GenerateFor(rowIndex)
 		rowIndex += 1
-	except:
-		print "row {0}".format(rowIndex)
-		raise
+except IndexError:
+	print "generation completed"
+except:
+	print "row {0}".format(rowIndex)
+	raise
+
