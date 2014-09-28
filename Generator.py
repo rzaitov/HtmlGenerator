@@ -19,6 +19,16 @@ class Generator:
 		f = open(self.templatePath)
 		self.template = f.read().decode('windows-1251')
 
+
+	# if value is float but can interpreted as int we will return int
+	def prepare_value(self, raw_value):
+		if isinstance(raw_value, float):
+			if raw_value.is_integer():
+				return int(raw_value)
+
+		return raw_value
+
+
 	def GenerateFor(self, rowIndex):
 		fileName = self.xlsHelper.GetValue(rowIndex, self.fileNameColumn)
 
@@ -35,6 +45,8 @@ class Generator:
 		paramMap = {}
 
 		for colName in self.columnNames:
-			paramMap[colName] = self.xlsHelper.GetValue(rowIndex, colName)
+			v = self.xlsHelper.GetValue(rowIndex, colName)
+			v = self.prepare_value(v)
+			paramMap[colName] = v
 
 		return paramMap
